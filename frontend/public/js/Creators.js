@@ -10,6 +10,7 @@ export class Create {
 		element.id && this.setId(element.id)
 		element.text && this.setText(element.text)
 		element.attrs && this.setAttrs(element.attrs)
+		element.actions && this.setActions(element.actions)
 	}
 
 	setClasses(classes){
@@ -31,11 +32,26 @@ export class Create {
 			this.element.setAttribute(attr, attrs[attr])
 		})
 	}
-
-	async getHTML(){
-
-		return this.element
+	setActions(actions){
+		const actionKeys = Object.keys(actions)
+		actionKeys.map((actionName) => {
+			this.element.addEventListener(actionName, (e) => {
+				if(e){
+					actions[actionName](e)
+				}else{
+					actions[actionName]()
+				}
+			})
+		})
 	}
+}
+
+
+export const makeTag = (treeEl, tree) => {
+	const elKeys = Object.keys(treeEl)
+	elKeys.map((elName) => {
+		tree[elName.slice(0,-2)] = new Create(treeEl[elName])
+	})
 }
 
 

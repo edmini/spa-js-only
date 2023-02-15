@@ -1,20 +1,22 @@
-import {Create} from "./Creators.js"
+import { makeTag } from "./Creators.js"
 
-const elNameChange = (elName) => {
-	return elName.slice(0, -2)
+
+const searchBtnClick = (e) => {
+	e.preventDefault()
+	const msg = navbarTree.navSearchInput.element.value	
+	navbarTree.navbarBrand.element.innerText = msg
+	navbarTree.navSearchInput.element.value	= ""
 }
 
-const makeTag = (treeEl) => {
-	const elKeys = Object.keys(treeEl)
-	elKeys.map((elName) => {
-		navbarTree[elNameChange(elName)] = new Create(navbarElTree[elName])
-	})
-}
+
 
 const navbarElTree = {
 	navbarEl : {
 		element : "nav",
 		classes : ["navbar", "bg-dark", "navbar-expand-lg", "bg-body-tertiary"],
+		attrs : {
+			"data-bs-theme" : "dark"
+		}
 	},
 	navbarContainerEl : {
 		element : "div",
@@ -85,7 +87,7 @@ const navbarElTree = {
 		classes : ["nav-link"],
 		text : "DATA",
 		attrs : {
-			href : "/data"
+			href : "/datas"
 		}
 	},
 	navSearchEl : {
@@ -106,14 +108,17 @@ const navbarElTree = {
 	},
 	navSearchBtnEl : {
 		element : "button",
-		classes : ["btn", "btn-outline-sucess"],
+		classes : ["btn", "btn-secondary"],
 		text : "SEARCH",
+		actions : {
+			click : searchBtnClick,
+		}
 	}
 }
 
 let navbarTree = {}
 
-makeTag(navbarElTree)
+makeTag(navbarElTree, navbarTree)
 
 
 navbarTree.navbar.element.appendChild(navbarTree.navbarContainer.element)
