@@ -17,8 +17,9 @@ export class Create {
 		const tagClass = classes.join(" ")
 		this.element.setAttribute("class", tagClass)
 	}
-	setClass(tagClass){
-		this.element.setAttribute("class", tagClass)
+	setClass(...tagClass){
+		const classList = tagClass.join(tagClass)
+		this.element.setAttribute("class", classList)
 	}
 	setId(tagId){
 		this.element.setAttribute("id", tagId)

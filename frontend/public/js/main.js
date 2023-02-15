@@ -1,11 +1,11 @@
 
 import views from './Views.js'
-import NavBar from './NavBar.js'
+import navBar from './NavBar.js'
 
 const app = document.querySelector("#app")
 const bodySection = document.createElement("div")
 bodySection.setAttribute("id", "bodySection")
-app.appendChild(NavBar.element)
+app.appendChild(navBar.element)
 app.appendChild(bodySection)
 
 const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$")

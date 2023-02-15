@@ -1,22 +1,25 @@
-import { Create } from "./Creators.js"
+import { makeTag } from "./Creators.js"
 
-const HomeEl = {
-	element : "div",
-	classes : ["container", "my-5"],
+const HomeElTree = {
+	homeEl : {
+		element : "div",
+		classes : ["container", "my-5"],
+	},
+	titleEl : {
+		element : "h1",
+		classes : ["h1"],
+		text : "Hello World Home"
+	}
 }
-const TitleEl = {
-	element : "h1",
-	classes : ["h1"],
-	text : "Hello World Home"
-}
 
-const home = new Create(HomeEl)
-const title = new Create(TitleEl)
-home.element.appendChild(title.element)
+let HomeTree = {}
+
+makeTag(HomeElTree, HomeTree)
+
+HomeTree.home.element.appendChild(HomeTree.title.element)
 
 
 
-
-export default home
+export default HomeTree
 
 

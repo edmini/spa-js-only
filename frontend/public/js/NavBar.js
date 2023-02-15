@@ -1,14 +1,13 @@
 import { makeTag } from "./Creators.js"
-
+import Home from "./Home.js"
 
 const searchBtnClick = (e) => {
 	e.preventDefault()
 	const msg = navbarTree.navSearchInput.element.value	
-	navbarTree.navbarBrand.element.innerText = msg
+	//navbarTree.navbarBrand.element.innerText = msg
+	Home.title.element.innerText = msg
 	navbarTree.navSearchInput.element.value	= ""
 }
-
-
 
 const navbarElTree = {
 	navbarEl : {
