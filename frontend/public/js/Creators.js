@@ -84,7 +84,11 @@ export const tableBody = (datas) => {
 			dataTDs[i] = {}
 			dataKeys.map((key) => {
 				dataTDs[i][key] = new Create(TableBodyElTree.tdEl)
-				dataTDs[i][key].element.innerText = data[key]
+				if(typeof(data[key]) === "object"){
+					dataTDs[i][key].element.appendChild(data[key])
+				}else{
+					dataTDs[i][key].element.innerText = data[key]
+				}
 			})
 		})
 //	dataKeys.map((key) => {

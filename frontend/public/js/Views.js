@@ -34,7 +34,6 @@ const views = {
 		title.element.innerText = "User Data"
 		const { default : table } = await import("./Table.js")
 		container.element.appendChild(table.table.table.element)
-		console.log(table.bodys)
 		return container
 	}
 }

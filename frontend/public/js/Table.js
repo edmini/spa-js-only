@@ -1,7 +1,7 @@
 import { Create, makeTable, tableBody } from "./Creators.js"
 
 const testBtnClick = (e) =>{
-	console.log(e.target)
+	console.log(e.target.value)
 }
 
 const testTable = [
@@ -45,9 +45,6 @@ for(let i = 0 ; i < testTable.length ; i++){
 }
 
 
-
-console.log("test values : ", testTable[0].edit)
-
 const TableElTree = {
 	tableEl : {
 		element : "table",
@@ -71,16 +68,15 @@ const TableElTree = {
 
 }
 
-const table = makeTable(TableElTree, testTable)
+const table1= makeTable(TableElTree, testTable)
 
 
-const table2 = makeTable(TableElTree)
-console.log(table2)
+const table = makeTable(TableElTree)
 
 const tbody = tableBody(testTable)
-console.log("tbody : ", tbody)
-
-
+tbody.dataTRs.map((tr)=>{
+	table.table.tbody.element.appendChild(tr.element)
+})
 
 
 
