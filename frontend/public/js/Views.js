@@ -8,8 +8,22 @@ const h1El = {
 	element : "h1",
 	classes : ["h1"]
 }
+
+const rowEl = {
+	element : "div",
+	classes : ["row", "justify-content-md-center"]
+}
+const colEl = {
+	element : "div",
+	classes : ["col-lg-8"]
+}
+
+
 const container = new Create(containerEl)
 const title = new Create(h1El)
+const row = new Create(rowEl)
+const col = new Create(colEl)
+
 
 container.element.appendChild(title.element)
 
@@ -32,8 +46,14 @@ const views = {
 	},
 	Datas : async () => {
 		title.element.innerText = "User Data"
+		container.element.appendChild(row.element)
+		row.element.appendChild(col.element)
 		const { default : table } = await import("./Table.js")
-		container.element.appendChild(table.table.table.element)
+		col.element.appendChild(table.table.table.element)
+		return container
+	},
+	Data : async (params) => {
+		title.element.innerText = `Data Page Params : ${params.id}`
 		return container
 	}
 }

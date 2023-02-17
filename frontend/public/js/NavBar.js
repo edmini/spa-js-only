@@ -59,7 +59,7 @@ const navbarElTree = {
 	},
 	navLinkAboutEl : {
 		element : "a",
-		classes : ["nav-link"],
+		classes : ["nav-link", "spa-link"],
 		text : "ABOUT",
 		attrs : {
 			href : "/about"
@@ -71,7 +71,7 @@ const navbarElTree = {
 	},
 	navLinkUserEl : {
 		element : "a",
-		classes : ["nav-link"],
+		classes : ["nav-link", "spa-link"],
 		text : "USER",
 		attrs : {
 			href : "/users"
@@ -83,7 +83,7 @@ const navbarElTree = {
 	},
 	navLinkDataEl : {
 		element : "a",
-		classes : ["nav-link"],
+		classes : ["nav-link", "spa-link"],
 		text : "DATA",
 		attrs : {
 			href : "/datas"

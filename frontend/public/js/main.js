@@ -25,6 +25,7 @@ const render = async () => {
 		{path : "/users", view : views.Users},
 		{path : "/user/:id", view : views.User},
 		{path : "/datas", view : views.Datas},
+		{path : "/data/:id", view : views.Data},
 	]
 
 	const potentialMatchs = routes.map((route) => {
@@ -57,10 +58,11 @@ window.addEventListener("popstate", ()=>{
 
 document.addEventListener("DOMContentLoaded", ()=>{
 	document.body.addEventListener("click", (e)=>{
-		if(e.target.tagName === "INPUT" || e.target.tagName !== "A"){
+		if(e.target.tagName === "INPUT"|| e.target.tagName !== "A" ){
 			return
 		}
-		if(e.target.getAttribute("class") === "nav-link"){
+		const classNames = e.target.getAttribute("class").split(" ")
+		if( classNames.find((res)=>res==='spa-link') === "spa-link" ){
 			e.preventDefault()
 			navigateTo(e.target.href)
 		}
