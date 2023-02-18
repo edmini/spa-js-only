@@ -12,9 +12,7 @@ const HomeElTree = {
 	}
 }
 
-let HomeTree = {}
-
-makeTag(HomeElTree, HomeTree)
+const HomeTree = makeTag(HomeElTree)
 
 HomeTree.home.element.appendChild(HomeTree.title.element)
 

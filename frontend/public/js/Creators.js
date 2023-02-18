@@ -1,6 +1,5 @@
 
 
-
 export class Create {
 	element = null
 	constructor(element){
@@ -48,11 +47,13 @@ export class Create {
 }
 
 
-export const makeTag = (treeEl, tree) => {
+export const makeTag = (treeEl) => {
+	let tree = {}
 	const elKeys = Object.keys(treeEl)
 	elKeys.map((elName) => {
 		tree[elName.slice(0,-2)] = new Create(treeEl[elName])
 	})
+	return tree
 }
 
 export const tableBody = (datas) => {
@@ -91,25 +92,18 @@ export const tableBody = (datas) => {
 				}
 			})
 		})
-//	dataKeys.map((key) => {
-//		TableTree.tr.element.appendChild(headerKeys[key].element)
-//	})
 		dataTRs.map((tr, i) => {
 			dataKeys.map((key) => {
 				tr.element.appendChild(dataTDs[i][key].element)
 			})
 		})
-
-
 	}
 	return {headerKeys, dataTRs, dataTDs}
 }
 
 export const makeTable = (tableElTree, datas) => {
 
-	let TableTree = {}
-
-	makeTag(tableElTree, TableTree)
+	const TableTree = makeTag(tableElTree)
 
 	TableTree.table.element.appendChild(TableTree.thead.element)
 	TableTree.table.element.appendChild(TableTree.tbody.element)
@@ -122,44 +116,12 @@ export const makeTable = (tableElTree, datas) => {
 		TableTree.tr.element.appendChild(tableDataBody.headerKeys[key].element)
 	})
 
-
 	tableDataBody.dataTRs.map((tr) => {
 		TableTree.tbody.element.appendChild(tr.element)
 	})
 
-/*
-	if(datas){
-		const dataKeys = Object.keys(datas[0])
-
-		dataKeys.map((key) => {
-			headerKeys[key] = new Create(tableElTree.thEl)
-			headerKeys[key].element.innerText = key
-		})
-		datas.map((data, i) => {
-			dataTRs.push(new Create(tableElTree.trEl))
-			dataTDs[i] = {}
-			dataKeys.map((key) => {
-				dataTDs[i][key] = new Create(tableElTree.tdEl)
-				dataTDs[i][key].element.innerText = data[key]
-			})
-		})
-		dataKeys.map((key) => {
-			TableTree.tr.element.appendChild(headerKeys[key].element)
-		})
-		dataTRs.map((tr, i) => {
-			TableTree.tbody.element.appendChild(tr.element)
-			dataKeys.map((key) => {
-				tr.element.appendChild(dataTDs[i][key].element)
-			})
-		})
-	}
-	*/
-
 	return {table : TableTree, headers : tableDataBody.headerKeys, bodys : tableDataBody.dataTDs}
 }
-
-
-
 
 
 

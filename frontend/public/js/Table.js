@@ -1,46 +1,20 @@
 import { Create, makeTable, tableBody } from "./Creators.js"
 
+const res = await fetch('https://jsonplaceholder.typicode.com/todos')
+const todosTable = await res.json()
+
+const users = await fetch("https://jsonplaceholder.typicode.com/users")
+const resUser = await users.json()
+
+todosTable.map((todo) => {
+	const {name} = resUser.find((user) => user.id === todo.userId)
+	todo.userName = name
+})
+
+
 const testCheckClick = (e) =>{
 	console.log(e.target.value)
 }
-
-const res = await fetch('https://jsonplaceholder.typicode.com/todos')
-const testTable = await res.json()
-
-const testBtn = {
-	element : "a",
-	classes : ["spa-link", "btn-primary", "btn", "btn-sm"],
-	text : "EDIT",
-	attrs : {
-		href : "",
-	},
-}
-const switchForm = {
-	element : "form",
-	classes : ["form-check", "form-switch"]
-}
-const testCheck = {
-	element : "input",
-	classes : ["form-check-input"],
-	attrs : {
-		value : null,
-		role : "switch",
-		type : "checkbox"
-	},
-	actions : {
-		click : testCheckClick,
-	}
-}
-
-testTable.map((tableData) => {
-	tableData.edit = (new Create(testBtn)).element
-	tableData.edit.setAttribute("href", `/data/${tableData.id}`)
-
-	const completState = tableData.completed
-	tableData.completed = (new Create(testCheck)).element
-	completState ? tableData.completed.setAttribute("checked", true) : null
-	tableData.completed.setAttribute("value", tableData.id)
-})
 
 const TableElTree = {
 	tableEl : {
@@ -62,12 +36,49 @@ const TableElTree = {
 	tdEl : {
 		element : "td",
 	},
-
 }
+
+const editBtnEl = {
+	element : "a",
+	classes : ["spa-link", "btn-primary", "btn", "btn-sm"],
+	text : "EDIT",
+	attrs : {
+		href : "",
+	},
+}
+const swFormEl = {
+	element : "form",
+	classes : ["form-check", "form-switch"]
+}
+const chkboxEl = {
+	element : "input",
+	classes : ["form-check-input"],
+	attrs : {
+		value : null,
+		role : "switch",
+		type : "checkbox"
+	},
+	actions : {
+		click : testCheckClick,
+	}
+}
+
+todosTable.map((tableData) => {
+	tableData.edit = (new Create(editBtnEl)).element
+	tableData.edit.setAttribute("href", `/data/${tableData.id}`)
+
+	const completState = tableData.completed
+	tableData.completed = (new Create(swFormEl)).element
+	const swBox = (new Create(chkboxEl)).element
+	completState ? swBox.setAttribute("checked", true) : null
+	swBox.setAttribute("value", tableData.id)
+	tableData.completed.appendChild(swBox)
+})
 
 const table = makeTable(TableElTree)
 
-const tbody = tableBody(testTable)
+
+const tbody = tableBody(todosTable.slice(10,25))
 tbody.dataTRs.map((tr)=>{
 	table.table.tbody.element.appendChild(tr.element)
 })
@@ -81,40 +92,4 @@ hkey.map((key) => {
 
 export default table
 
-
-
-
-
-
-//const table1= makeTable(TableElTree, testTable)
-
-
-/*
-const testTable = [
-	{
-		id : 1,
-		name : "hosang",
-		age : 45,
-		complete : true,
-	},
-	{
-		id : 2,
-		name : "jihye",
-		age : 44,
-		complete : false,
-	},
-	{
-		id : 3,
-		name : "yaeeun",
-		age : 24,
-		complete : false,
-	},
-	{
-		id : 4,
-		name : "hyang",
-		age : 37,
-		complete : true,
-	},
-]
-*/
 

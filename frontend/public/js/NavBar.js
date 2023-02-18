@@ -115,26 +115,30 @@ const navbarElTree = {
 	}
 }
 
-let navbarTree = {}
-
-makeTag(navbarElTree, navbarTree)
+const navbarTree = makeTag(navbarElTree)
 
 
-navbarTree.navbar.element.appendChild(navbarTree.navbarContainer.element)
-navbarTree.navbarContainer.element.appendChild(navbarTree.navbarBrand.element)
-navbarTree.navbarContainer.element.appendChild(navbarTree.navbarToggleBtn.element)
-navbarTree.navbarToggleBtn.element.appendChild(navbarTree.navbarToggleIcon.element)
-navbarTree.navbarContainer.element.appendChild(navbarTree.navbarCollapse.element)
-navbarTree.navbarCollapse.element.appendChild(navbarTree.navbarNav.element)
-navbarTree.navbarNav.element.appendChild(navbarTree.navItemAbout.element)
-navbarTree.navItemAbout.element.appendChild(navbarTree.navLinkAbout.element)
-navbarTree.navbarNav.element.appendChild(navbarTree.navItemUser.element)
-navbarTree.navItemUser.element.appendChild(navbarTree.navLinkUser.element)
-navbarTree.navbarNav.element.appendChild(navbarTree.navItemData.element)
-navbarTree.navItemData.element.appendChild(navbarTree.navLinkData.element)
-navbarTree.navbarCollapse.element.appendChild(navbarTree.navSearch.element)
-navbarTree.navSearch.element.appendChild(navbarTree.navSearchInput.element)
-navbarTree.navSearch.element.appendChild(navbarTree.navSearchBtn.element)
+navbarTree.navbar.element
+	.appendChild(navbarTree.navbarContainer.element)
+	.appendChild(navbarTree.navbarBrand.element)
+navbarTree.navbarContainer.element
+	.appendChild(navbarTree.navbarToggleBtn.element)
+	.appendChild(navbarTree.navbarToggleIcon.element)
+navbarTree.navbarContainer.element
+	.appendChild(navbarTree.navbarCollapse.element)
+	.appendChild(navbarTree.navbarNav.element)
+	.appendChild(navbarTree.navItemAbout.element)
+	.appendChild(navbarTree.navLinkAbout.element)
+navbarTree.navbarNav.element
+	.appendChild(navbarTree.navItemUser.element)
+	.appendChild(navbarTree.navLinkUser.element)
+navbarTree.navbarNav.element
+	.appendChild(navbarTree.navItemData.element)
+	.appendChild(navbarTree.navLinkData.element)
+navbarTree.navbarCollapse.element
+	.appendChild(navbarTree.navSearch.element)
+	.appendChild(navbarTree.navSearchInput.element)
+	.after(navbarTree.navSearchBtn.element)
 
 
 export default navbarTree.navbar

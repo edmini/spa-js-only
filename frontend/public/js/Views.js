@@ -15,7 +15,7 @@ const rowEl = {
 }
 const colEl = {
 	element : "div",
-	classes : ["col-lg-8"]
+	classes : ["col-lg-10"]
 }
 
 
@@ -38,6 +38,7 @@ const views = {
 	},
 	Users : async () => {
 		title.element.innerText = "Users Page"
+		//console.log(container.element.children[1])
 		return container
 	},
 	User : async (params) => {
@@ -45,7 +46,7 @@ const views = {
 		return container
 	},
 	Datas : async () => {
-		title.element.innerText = "User Data"
+		title.element.innerText = "Todos"
 		container.element.appendChild(row.element)
 		row.element.appendChild(col.element)
 		const { default : table } = await import("./Table.js")
