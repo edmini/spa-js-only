@@ -38,7 +38,6 @@ const views = {
 	},
 	Users : async () => {
 		title.element.innerText = "Users Page"
-		//console.log(container.element.children[1])
 		return container
 	},
 	User : async (params) => {
@@ -55,6 +54,10 @@ const views = {
 	},
 	Data : async (params) => {
 		title.element.innerText = `Data Page Params : ${params.id}`
+		const { Detail } = await import("./Detail.js")
+		const todo = await Detail(params)
+		console.log("view : ", todo)
+		container.element.replaceChildren(todo.card.element)
 		return container
 	}
 }
