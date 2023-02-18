@@ -1,3 +1,4 @@
+
 import { Create, makeTable, tableBody } from "./Creators.js"
 
 const res = await fetch('https://jsonplaceholder.typicode.com/todos')
@@ -6,12 +7,13 @@ const todosTable = await res.json()
 const users = await fetch("https://jsonplaceholder.typicode.com/users")
 const resUser = await users.json()
 
+//userId === userName
 todosTable.map((todo) => {
 	const {name} = resUser.find((user) => user.id === todo.userId)
-	todo.userName = name
+	todo.userId = name
 })
 
-
+//actions function
 const testCheckClick = (e) =>{
 	console.log(e.target.value)
 }
@@ -63,6 +65,7 @@ const chkboxEl = {
 	}
 }
 
+//button and sw insert on table
 todosTable.map((tableData) => {
 	tableData.edit = (new Create(editBtnEl)).element
 	tableData.edit.setAttribute("href", `/data/${tableData.id}`)
@@ -78,7 +81,7 @@ todosTable.map((tableData) => {
 const table = makeTable(TableElTree)
 
 
-const tbody = tableBody(todosTable.slice(10,25))
+const tbody = tableBody(todosTable.slice(0 , 15))
 tbody.dataTRs.map((tr)=>{
 	table.table.tbody.element.appendChild(tr.element)
 })

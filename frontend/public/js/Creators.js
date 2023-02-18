@@ -101,14 +101,10 @@ export const tableBody = (datas) => {
 	return {headerKeys, dataTRs, dataTDs}
 }
 
+
 export const makeTable = (tableElTree, datas) => {
 
 	const TableTree = makeTag(tableElTree)
-
-	TableTree.table.element.appendChild(TableTree.thead.element)
-	TableTree.table.element.appendChild(TableTree.tbody.element)
-	TableTree.thead.element.appendChild(TableTree.tr.element)
-
 	const tableDataBody = tableBody(datas)
 
 	const header = datas && Object.keys(datas[0])
@@ -119,6 +115,10 @@ export const makeTable = (tableElTree, datas) => {
 	tableDataBody.dataTRs.map((tr) => {
 		TableTree.tbody.element.appendChild(tr.element)
 	})
+
+	TableTree.table.element.appendChild(TableTree.thead.element)
+	TableTree.table.element.appendChild(TableTree.tbody.element)
+	TableTree.thead.element.appendChild(TableTree.tr.element)
 
 	return {table : TableTree, headers : tableDataBody.headerKeys, bodys : tableDataBody.dataTDs}
 }

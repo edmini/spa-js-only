@@ -1,10 +1,9 @@
 import { makeTag } from "./Creators.js"
-import Home from "./Home.js"
 
-const searchBtnClick = (e) => {
+const searchBtnClick = async (e) => {
 	e.preventDefault()
 	const msg = navbarTree.navSearchInput.element.value	
-	//navbarTree.navbarBrand.element.innerText = msg
+	const { default : Home } = await import("./Home.js")
 	Home.title.element.innerText = msg
 	navbarTree.navSearchInput.element.value	= ""
 }
