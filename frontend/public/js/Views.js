@@ -18,14 +18,11 @@ const colEl = {
 	classes : ["col-lg-10"]
 }
 
-
 const container = new Create(containerEl)
 const title = new Create(h1El)
 const row = new Create(rowEl)
 const col = new Create(colEl)
 
-
-container.element.appendChild(title.element)
 
 const views = {
 	Home : async () => {
@@ -37,14 +34,17 @@ const views = {
 		return about
 	},
 	Users : async () => {
+		container.element.replaceChildren(title.element)
 		title.element.innerText = "Users Page"
 		return container
 	},
 	User : async (params) => {
+		container.element.replaceChildren(title.element)
 		title.element.innerText = `User Page Params : ${params}`
 		return container
 	},
 	Datas : async () => {
+		container.element.replaceChildren(title.element)
 		title.element.innerText = "Todos"
 		container.element.appendChild(row.element)
 		row.element.appendChild(col.element)
@@ -53,11 +53,11 @@ const views = {
 		return container
 	},
 	Data : async (params) => {
+		container.element.replaceChildren(title.element)
 		title.element.innerText = `Data Page Params : ${params.id}`
 		const { Detail } = await import("./Detail.js")
 		const todo = await Detail(params)
-		console.log("view : ", todo)
-		container.element.replaceChildren(todo.card.element)
+		container.element.appendChild(todo.card.element)
 		return container
 	}
 }
