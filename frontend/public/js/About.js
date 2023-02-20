@@ -2,7 +2,7 @@ import {Create} from "./Creators.js"
 
 const AboutEl = {
 	element : "div",
-	classes : ["container", "my-5"]
+	classes : ["container", "my-5", "py-5"]
 }
 
 const AboutTitleEl = {

@@ -2,7 +2,7 @@ import { Create } from "./Creators.js"
 
 const containerEl = {
 	element : "div",
-	classes : ["container", "my-5"]
+	classes : ["container", "my-5", "py-5"]
 }
 const h1El = {
 	element : "h1",
@@ -49,7 +49,7 @@ const views = {
 		container.element.appendChild(row.element)
 		row.element.appendChild(col.element)
 		const { default : table } = await import("./Table.js")
-		col.element.appendChild(table.table.table.element)
+		col.element.appendChild(table.table.tableContainer.element)
 		return container
 	},
 	Data : async (params) => {

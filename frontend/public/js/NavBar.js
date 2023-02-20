@@ -4,14 +4,14 @@ const searchBtnClick = async (e) => {
 	e.preventDefault()
 	const msg = navbarTree.navSearchInput.element.value	
 	const { default : Home } = await import("./Home.js")
-	Home.title.element.innerText = msg
+	Home.title1.element.innerText = msg
 	navbarTree.navSearchInput.element.value	= ""
 }
 
 const navbarElTree = {
 	navbarEl : {
 		element : "nav",
-		classes : ["navbar", "bg-dark", "navbar-expand-lg", "bg-body-tertiary"],
+		classes : ["navbar", "bg-dark", "navbar-expand-lg", "bg-body-tertiary", "fixed-top", "nav-shadow"],
 		attrs : {
 			"data-bs-theme" : "dark"
 		}

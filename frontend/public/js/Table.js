@@ -19,9 +19,13 @@ const testCheckClick = (e) =>{
 }
 
 const TableElTree = {
+	tableContainerEl : {
+		element : "div",
+		classes : ["table-responsive"]
+	},
 	tableEl : {
 		element : "table",
-		classes : ["table"]
+		classes : ["table", "table-sm"]
 	},
 	theadEl : {
 		element : "thead",
@@ -80,6 +84,7 @@ todosTable.map((tableData) => {
 
 const table = makeTable(TableElTree)
 
+table.table.tableContainer.element.appendChild(table.table.table.element)
 
 const tbody = tableBody(todosTable.slice(0 , 15))
 tbody.dataTRs.map((tr)=>{

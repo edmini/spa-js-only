@@ -14,3 +14,7 @@
 }
 
 
+.nav-shadow {
+	box-shadow : 0px 10px 20px rgba(100, 100, 100, 0.2);
+}
+
