@@ -36,6 +36,9 @@ const views = {
 	Users : async () => {
 		container.element.replaceChildren(title.element)
 		title.element.innerText = "Users Page"
+		const { default : Users } = await import("./Users.js")
+		const userTree = Users()
+		console.log(userTree)
 		return container
 	},
 	User : async (params) => {

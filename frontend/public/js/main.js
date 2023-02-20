@@ -49,19 +49,15 @@ const render = async () => {
 
 const navigateTo = (url) => {
 	history.pushState(null, null, url)
-	console.log("navigateTo")
 	render()
 }
 
 window.addEventListener("popstate", ()=>{
-	console.log("popstate")
 	render()
 })
 
 document.addEventListener("DOMContentLoaded", ()=>{
-	console.log("DOMContentLoaded")
 	document.body.addEventListener("click", (e)=>{
-		console.log("DOM Click")
 		if(e.target.tagName === "INPUT"|| e.target.tagName !== "A" ){
 			return
 		}
