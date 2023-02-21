@@ -10,6 +10,7 @@ export class Create {
 		element.text && this.setText(element.text)
 		element.attrs && this.setAttrs(element.attrs)
 		element.actions && this.setActions(element.actions)
+		element.child && this.setAppendChild(element.child)
 	}
 
 	setClasses(classes){
@@ -29,7 +30,23 @@ export class Create {
 	setAttrs(attrs){
 		const keys = Object.keys(attrs)
 		keys.map((attr) => {
-			this.element.setAttribute(attr, attrs[attr])
+			if(attr === "checked" && attrs[attr] === false){
+				return
+			}else{
+				this.element.setAttribute(attr, attrs[attr])
+			}
+		})
+	}
+	setAppendChild(child){
+		const statusKey = Object.keys(child)
+		statusKey.map((key) => {
+			if(key === "append"){
+				this.element.appendChild(child[key].element)
+			}else if(key === "after"){
+				this.element.after(child[key].element)
+			}else if(key === "before"){
+				this.element.before(child[key].element)
+			}
 		})
 	}
 	setActions(actions){

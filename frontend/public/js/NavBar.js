@@ -22,7 +22,7 @@ const navbarElTree = {
 	},
 	navbarBrandEl : {
 		element : "a",
-		classes : ["navbar-brand"],
+		classes : ["navbar-brand", "spa-link"],
 		text : "Logo",
 		attrs : {
 			href : "/"
@@ -74,6 +74,18 @@ const navbarElTree = {
 		text : "USER",
 		attrs : {
 			href : "/users"
+		}
+	},
+	navItemAlbumEl : {
+		element : "li",
+		classes : ["nav-item"]
+	},
+	navLinkAlbumEl : {
+		element : "a",
+		classes : ["nav-link", "spa-link"],
+		text : "ALBUM",
+		attrs : {
+			href : "/albums"
 		}
 	},
 	navItemDataEl : {
@@ -134,6 +146,9 @@ navbarTree.navbarNav.element
 navbarTree.navbarNav.element
 	.appendChild(navbarTree.navItemData.element)
 	.appendChild(navbarTree.navLinkData.element)
+navbarTree.navbarNav.element
+	.appendChild(navbarTree.navItemAlbum.element)
+	.appendChild(navbarTree.navLinkAlbum.element)
 navbarTree.navbarCollapse.element
 	.appendChild(navbarTree.navSearch.element)
 	.appendChild(navbarTree.navSearchInput.element)

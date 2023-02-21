@@ -25,7 +25,9 @@ const render = async () => {
 		{path : "/users", view : views.Users},
 		{path : "/user/:id", view : views.User},
 		{path : "/datas", view : views.Datas},
+		{path : "/datas/:page", view : views.Datas},
 		{path : "/data/:id", view : views.Data},
+		{path : "/albums", view : views.Albums},
 	]
 
 	const potentialMatchs = routes.map((route) => {

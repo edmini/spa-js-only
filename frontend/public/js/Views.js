@@ -37,22 +37,24 @@ const views = {
 		container.element.replaceChildren(title.element)
 		title.element.innerText = "Users Page"
 		const { default : Users } = await import("./Users.js")
-		const userTree = Users()
+		const userTree = await Users()
 		console.log(userTree)
-		return container
+		return userTree.container
 	},
 	User : async (params) => {
 		container.element.replaceChildren(title.element)
 		title.element.innerText = `User Page Params : ${params}`
 		return container
 	},
-	Datas : async () => {
+	Datas : async (params) => {
+		const p = params.page ? params.page : null
 		container.element.replaceChildren(title.element)
 		title.element.innerText = "Todos"
 		container.element.appendChild(row.element)
 		row.element.appendChild(col.element)
-		const { default : table } = await import("./Table.js")
-		col.element.appendChild(table.table.tableContainer.element)
+		const { default : Table } = await import("./Table.js")
+		const table = await Table(p)
+		col.element.replaceChildren(table.table.tableContainer.element)
 		return container
 	},
 	Data : async (params) => {
@@ -62,7 +64,13 @@ const views = {
 		const todo = await Detail(params)
 		container.element.appendChild(todo.card.element)
 		return container
+	},
+	Albums : async () => {
+		container.element.replaceChildren(title.element)
+		title.element.innerText = `Albums`
+		return container
 	}
+
 }
 
 export default views

@@ -6,6 +6,34 @@ export const Detail = async (params) =>{
 	const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
 	const resJson = await res.json()
 
+	const SwElTree = {
+		cardSwFormEl : {
+			element : "div",
+			classes : ["form-check", "form-switch"]
+		},
+		cardCheckEl : {
+			element : "input",
+			classes : ["form-check-input"],
+			id : "completedLabel",
+			attrs : {
+				type : "checkbox",
+				checked : resJson.completed,
+			}
+		},
+		checkLabelEl : {
+			element : "label",
+			classes : ["form-check-label"],
+			text : "completed",
+			attrs : {
+				for : "completedLabel"
+			}
+		}
+	}
+
+	const swTree = makeTag(SwElTree)
+	swTree.cardSwForm.element.appendChild(swTree.cardCheck.element)
+	swTree.cardSwForm.element.appendChild(swTree.checkLabel.element)
+
 	const CardElTree = {
 		cardEl : {
 			element : "div",
@@ -23,21 +51,24 @@ export const Detail = async (params) =>{
 		cardTitleEl : {
 			element : "h4",
 			classes : ["card-title"],
-			text : resJson.id,
+			text : resJson.title,
 		},
+
 		cardTextEl : {
 			element : "p",
 			classes : ["card-text"],
-			text : resJson.title,
+			child : {
+				append : swTree.cardSwForm
+			},
 		},
 		cardBtnEl : {
 			element : "a",
-			classes : ["btn", "btn-primary"],
+			classes : ["btn", "btn-primary", "spa-link"],
 			text : "Close",
 			attrs : {
 				href : "/datas"
 			}
-		}
+		},
 	}
 
 	const todo = makeTag(CardElTree)
