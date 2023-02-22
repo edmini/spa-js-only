@@ -73,8 +73,8 @@ export const makeTag = (treeEl) => {
 	return tree
 }
 
-export const tableBody = (datas) => {
 
+export const tableBody = (datas) => {
 	const TableBodyElTree = {
 		trEl : {
 			element : "tr"

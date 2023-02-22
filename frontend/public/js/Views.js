@@ -23,8 +23,13 @@ const title = new Create(h1El)
 const row = new Create(rowEl)
 const col = new Create(colEl)
 
+// const queryString = window.location.search
+// const urlParams = new URLSearchParams(queryString)
+// const abc = urlParams.get('abc')
+// console.log(abc)
 
 const views = {
+
 	Home : async () => {
 		const { default : Home } = await import("./Home.js")
 		return Home.home
@@ -33,13 +38,12 @@ const views = {
 		const { default : about } = await import("./About.js")
 		return about
 	},
-	Users : async () => {
+	Photos : async () => {
 		container.element.replaceChildren(title.element)
-		title.element.innerText = "Users Page"
-		const { default : Users } = await import("./Users.js")
-		const userTree = await Users()
-		console.log(userTree)
-		return userTree.container
+		title.element.innerText = "Photos Page"
+		const { default : Photos } = await import("./Photos.js")
+		const photoCards = await Photos()
+		return photoCards.container
 	},
 	User : async (params) => {
 		container.element.replaceChildren(title.element)
@@ -53,8 +57,8 @@ const views = {
 		container.element.appendChild(row.element)
 		row.element.appendChild(col.element)
 		const { default : Table } = await import("./Table.js")
-		const table = await Table(p)
-		col.element.replaceChildren(table.table.tableContainer.element)
+		const todos = await Table(p)
+		col.element.replaceChildren(todos.table.tableContainer.element)
 		return container
 	},
 	Data : async (params) => {
@@ -62,7 +66,7 @@ const views = {
 		title.element.innerText = `Data Page Params : ${params.id}`
 		const { Detail } = await import("./Detail.js")
 		const todo = await Detail(params)
-		container.element.appendChild(todo.card.element)
+		container.element.appendChild(todo.row.element)
 		return container
 	},
 	Albums : async () => {

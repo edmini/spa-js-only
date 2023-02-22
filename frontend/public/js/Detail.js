@@ -35,6 +35,14 @@ export const Detail = async (params) =>{
 	swTree.cardSwForm.element.appendChild(swTree.checkLabel.element)
 
 	const CardElTree = {
+		rowEl : {
+			element : "div",
+			classes : ["row", "justify-content-md-center", "my-5"]
+		},
+		colEl : {
+			element : "div",
+			classes : ["col-md-6"]
+		},
 		cardEl : {
 			element : "div",
 			classes : ["card"]
@@ -75,7 +83,10 @@ export const Detail = async (params) =>{
 
 
 
-	todo.card.element.appendChild(todo.cardHeader.element)
+	todo.row.element
+	.appendChild(todo.col.element)
+	.appendChild(todo.card.element)
+	.appendChild(todo.cardHeader.element)
 	todo.card.element.appendChild(todo.cardBody.element)
 	todo.cardBody.element.appendChild(todo.cardTitle.element)
 	todo.cardBody.element.appendChild(todo.cardText.element)

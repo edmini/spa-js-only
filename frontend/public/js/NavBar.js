@@ -71,9 +71,9 @@ const navbarElTree = {
 	navLinkUserEl : {
 		element : "a",
 		classes : ["nav-link", "spa-link"],
-		text : "USER",
+		text : "PHOTOS",
 		attrs : {
-			href : "/users"
+			href : "/photos"
 		}
 	},
 	navItemAlbumEl : {

@@ -22,7 +22,7 @@ const render = async () => {
 	const routes = [
 		{path : "/", view : views.Home},
 		{path : "/about", view : views.About},
-		{path : "/users", view : views.Users},
+		{path : "/photos", view : views.Photos},
 		{path : "/user/:id", view : views.User},
 		{path : "/datas", view : views.Datas},
 		{path : "/datas/:page", view : views.Datas},
