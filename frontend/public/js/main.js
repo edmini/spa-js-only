@@ -60,7 +60,7 @@ window.addEventListener("popstate", ()=>{
 
 document.addEventListener("DOMContentLoaded", ()=>{
 	document.body.addEventListener("click", (e)=>{
-		if(e.target.tagName === "INPUT"|| e.target.tagName !== "A" ){
+		if(e.target.tagName === "INPUT"|| e.target.tagName !== "A"){
 			return
 		}
 		const classNames = e.target.getAttribute("class").split(" ")

@@ -57,7 +57,6 @@ const Photos = async () => {
 
 	}
 
-
 	const photoTree = makeTag(PhotoBodyEl)
 
 	function* colsGen(){
@@ -65,7 +64,6 @@ const Photos = async () => {
 
 			yield makeTag(PhotoCardEl)
 		}
-
 	}
 
 	const cols = colsGen()
@@ -90,38 +88,9 @@ const Photos = async () => {
 		photoTree.row.element.appendChild(photo.value.col.element)
 	})
 
-	// userCol.map((col) => {
-	// 	console.log(col[0].value)
-
-	// 	col.value.cardImgTop.element.setAttribute("src", )
-	// 	col.value.col.element.appendChild(col.value.card.element)
-	// 	col.value.card.element.appendChild(col.value.cardImgTop.element)
-	// 	col.value.card.element.appendChild(col.value.cardBody.element)
-	// 	col.value.cardBody.element.appendChild(col.value.cardTitle.element)
-	// 	col.value.cardBody.element.appendChild(col.value.cardText.element)
-	// 	col.value.cardBody.element.appendChild(col.value.cardBtn.element)
-	// })
-
-
-	// userTree.container.element
-	// 	.appendChild(userTree.row.element)
-
-	// userCol.map((col) => {
-	// 	userTree.row.element.appendChild(col.value.element)
-
-	// })
-
 	return photoTree
-
-
 
 }
 
-
 export default Photos
-
-
-
-
-
 

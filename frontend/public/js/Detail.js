@@ -2,6 +2,11 @@
 import { makeTag } from "./Creators.js"
 
 export const Detail = async (params) =>{
+
+	const queryString = window.location.search
+	const urlParams = new URLSearchParams(queryString)
+	const page = urlParams.get('page') ?? 1
+
 	const {id} = params
 	const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
 	const resJson = await res.json()
@@ -74,7 +79,7 @@ export const Detail = async (params) =>{
 			classes : ["btn", "btn-primary", "spa-link"],
 			text : "Close",
 			attrs : {
-				href : "/datas"
+				href : `/datas/${page}`
 			}
 		},
 	}

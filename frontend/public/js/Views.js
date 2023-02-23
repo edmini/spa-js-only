@@ -11,7 +11,7 @@ const h1El = {
 
 const rowEl = {
 	element : "div",
-	classes : ["row", "justify-content-md-center"]
+	classes : ["row", "justify-content-lg-center"]
 }
 const colEl = {
 	element : "div",
@@ -22,11 +22,6 @@ const container = new Create(containerEl)
 const title = new Create(h1El)
 const row = new Create(rowEl)
 const col = new Create(colEl)
-
-// const queryString = window.location.search
-// const urlParams = new URLSearchParams(queryString)
-// const abc = urlParams.get('abc')
-// console.log(abc)
 
 const views = {
 
