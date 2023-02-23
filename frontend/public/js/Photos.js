@@ -1,11 +1,11 @@
-import {makeTag, Create} from "./Creators.js"
+import { makeTag } from "./Creators.js"
 
 
 const Photos = async () => {
 
 	const res = await fetch("https://jsonplaceholder.typicode.com/photos")
 	const resResult = await res.json()
-	const resPhotos = resResult.slice(0, 10)
+	const resPhotos = resResult.slice(0, 30)
 
 	const PhotoBodyEl = {
 		containerEl : {
@@ -21,7 +21,7 @@ const Photos = async () => {
 	const PhotoCardEl = {
 		colEl : {
 			element : "div",
-			classes : ["col-md-3"]
+			classes : ["col-md-4", "my-3"]
 		},
 		cardEl : {
 			element : "div",
