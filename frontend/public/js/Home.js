@@ -129,7 +129,7 @@ const HomeElTree = {
 	},
 	prevBtnIconEl : {
 		element : "span",
-		classes : ["carouse-control-prev-icon"],
+		classes : ["carousel-control-prev-icon"],
 		attrs : {
 			"aria-hidden" : true
 		}
@@ -149,7 +149,7 @@ const HomeElTree = {
 	},
 	nextBtnIconEl : {
 		element : "span",
-		classes : ["carouse-control-next-icon"],
+		classes : ["carousel-control-next-icon"],
 		attrs : {
 			"aria-hidden" : true
 		}
