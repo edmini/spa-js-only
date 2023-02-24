@@ -47,10 +47,9 @@ const views = {
 		return container
 	},
 	Datas : async (params) => {
-		// console.log(params.page)
-		console.log(params.page.split("/"))
-		const p = params.page ? params.page.split("/") : null
+
 		// const p = params.page ? params.page : null
+		const p = params.page ? params.page : null
 		container.element.replaceChildren(title.element)
 		title.element.innerText = "Todos"
 		container.element.appendChild(row.element)

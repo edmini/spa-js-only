@@ -15,39 +15,11 @@ const Table = async (p) => {
 		})
 	}
 
-	// const queryString = window.location.search
-	// const urlParams = new URLSearchParams(queryString)
-	// const search = urlParams.get('search') ?? null
-
-	console.log(p)
-
-	let search = null
-	if(p[1]){
-		console.log(p[1])
-		search = p[1] !== "null" ? p[1] : null
-		console.log(search)
-
-		const searchTable = search ?? filterItem(search)
-		todosTable = searchTable
-	}
-	
-
-	if(search){
-		todosTable = filterItem(search)
-	}
-
 	const searchTodo = (e) =>{
 		e.preventDefault()
 
 		const search = table.table.search.element.value
-
-		// todosTable = filterItem(search)
-
-		// console.log(todosTable)
-
-		window.location.href=`/datas/${search}`
-
-		table.table.search.element.value = ""
+		console.log(search)
 	}
 
 	//actions function
@@ -172,12 +144,7 @@ const Table = async (p) => {
 		}
 	}
 
-
-	let page = 1
-	if(p[0]){
-		page = p[0] ? p[0] : 1
-	}
-	
+	const page = p ? p : 1
 	const width = 10
 	const allPage = Math.ceil(todosTable.length / width)
 	const start = page === 1 ? 0 : (page-1) * width
@@ -231,7 +198,7 @@ const Table = async (p) => {
 			pages[i].pageItem.element.classList.add("active")
 			pages[i].pageItem.element.setAttribute("aria-current", "page")
 		}
-		pages[i].pageLink.element.setAttribute("href", search ? `/datas/${i+1}` : `/datas/${i+1}/${search}`)
+		pages[i].pageLink.element.setAttribute("href", `/datas/${i+1}`)
 		pages[i].pageLink.element.innerText = i+1
 		pages[i].pageItem.element.appendChild(pages[i].pageLink.element)
 		table.table.pagination.element.appendChild(pages[i].pageItem.element)
