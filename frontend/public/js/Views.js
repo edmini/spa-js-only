@@ -30,8 +30,9 @@ const views = {
 		return Home.home
 	},
 	About : async () => {
-		const { default : about } = await import("./About.js")
-		return about
+		console.log("About")
+		// const { default : about } = await import("./About.js")
+		// return about
 	},
 	Photos : async () => {
 		container.element.replaceChildren(title.element)
@@ -46,7 +47,10 @@ const views = {
 		return container
 	},
 	Datas : async (params) => {
-		const p = params.page ? params.page : null
+		// console.log(params.page)
+		console.log(params.page.split("/"))
+		const p = params.page ? params.page.split("/") : null
+		// const p = params.page ? params.page : null
 		container.element.replaceChildren(title.element)
 		title.element.innerText = "Todos"
 		container.element.appendChild(row.element)

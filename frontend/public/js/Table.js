@@ -8,9 +8,32 @@ const Table = async (p) => {
 	let todosTable = await res.json()
 
 	const filterItem = (search) => {
+		console.log(search)
+		console.log(todosTable)
 		return todosTable.filter((todos) => {
 			return todos.title.toLowerCase().indexOf(search.toLowerCase()) > -1
 		})
+	}
+
+	// const queryString = window.location.search
+	// const urlParams = new URLSearchParams(queryString)
+	// const search = urlParams.get('search') ?? null
+
+	console.log(p)
+
+	let search = null
+	if(p[1]){
+		console.log(p[1])
+		search = p[1] !== "null" ? p[1] : null
+		console.log(search)
+
+		const searchTable = search ?? filterItem(search)
+		todosTable = searchTable
+	}
+	
+
+	if(search){
+		todosTable = filterItem(search)
 	}
 
 	const searchTodo = (e) =>{
@@ -18,9 +41,11 @@ const Table = async (p) => {
 
 		const search = table.table.search.element.value
 
-		todosTable = filterItem(search)
+		// todosTable = filterItem(search)
 
-		console.log(todosTable)
+		// console.log(todosTable)
+
+		window.location.href=`/datas/${search}`
 
 		table.table.search.element.value = ""
 	}
@@ -148,12 +173,15 @@ const Table = async (p) => {
 	}
 
 
-	const page = p ? p : 1
+	let page = 1
+	if(p[0]){
+		page = p[0] ? p[0] : 1
+	}
+	
 	const width = 10
 	const allPage = Math.ceil(todosTable.length / width)
 	const start = page === 1 ? 0 : (page-1) * width
-	const end = page === 1 ? width : page * width
-
+	const end = page === 1 ? todosTable.length > width ? width : todosTable.length : page * width
 	
 	// const users = await fetch("https://jsonplaceholder.typicode.com/users")
 	// const resUser = await users.json()
@@ -203,7 +231,7 @@ const Table = async (p) => {
 			pages[i].pageItem.element.classList.add("active")
 			pages[i].pageItem.element.setAttribute("aria-current", "page")
 		}
-		pages[i].pageLink.element.setAttribute("href", `/datas/${i+1}`)
+		pages[i].pageLink.element.setAttribute("href", search ? `/datas/${i+1}` : `/datas/${i+1}/${search}`)
 		pages[i].pageLink.element.innerText = i+1
 		pages[i].pageItem.element.appendChild(pages[i].pageLink.element)
 		table.table.pagination.element.appendChild(pages[i].pageItem.element)

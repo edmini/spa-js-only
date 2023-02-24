@@ -1,23 +1,34 @@
-import {Create} from "./Creators.js"
+import {Create, makeTag} from "./Creators.js"
 
-const AboutEl = {
-	element : "div",
-	classes : ["container", "my-5", "py-5"]
+
+
+
+
+
+
+
+const dataTable = (all_data, current_page, width) => {
+	const curPage = current_page
+	const allData = all_data
 }
 
-const AboutTitleEl = {
-	element : "h1",
-	classes : ["h1", "text-primary"],
-	text : "ABOUT"
-}
-
-const about = new Create(AboutEl)
-const aboutTitle = new Create(AboutTitleEl)
-
-about.element.appendChild(aboutTitle.element)
 
 
-export default about
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
